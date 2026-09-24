@@ -1,0 +1,6 @@
+{
+    "model": "gpt-oss:120b-cloud",
+    "num_ctx": 5300,
+    "num_gpu": 48,
+    "keep_alive": 0
+}

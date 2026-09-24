@@ -1,0 +1,5 @@
+{
+    "model": "qwen3.6:35b",
+    "num_ctx": 20000,
+    "keep_alive": 0
+}

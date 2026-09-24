@@ -1,0 +1,5 @@
+{
+    "model": "gpt-oss:120b-cloud",
+    "num_ctx": 20000,
+    "keep_alive": 0
+}
