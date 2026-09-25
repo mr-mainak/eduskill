@@ -5,6 +5,7 @@ from utils.config_reader import load_config
 from utils.logger import global_logger
 from utils.prompt_reader import load_prompt
 from utils.filter_message import filter_tool_messages
+from utils.extract_text_from_message import extract_text_from_message
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
 import sys
@@ -30,9 +31,16 @@ def semantic_search_node(state: GeneralPurposeState) -> GeneralPurposeState:
         # filtered_messages = state["messages"]
         # print(filtered_messages)
 
+        #Extract only text part no image
+        recent_messages = filtered_messages[-7:]
+        question = "\n\n".join(extract_text_from_message(msg)
+            for msg in recent_messages
+            if extract_text_from_message(msg))
+        # print("question::::::::::::::::::",question)
+
         return {
             "messages": [chain.invoke({
-                    "question": filtered_messages[-7:],
+                    "question": question,
                     "project_id": project_id,
                     "context": context
                 })],
